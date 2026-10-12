@@ -1,50 +1,127 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Proyecto Git - Grupo X</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Proyecto Git - Grupo X | Sistema de Estudiantes</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>
-        <h1>Mi Proyecto Web</h1>
-        <nav>
-            <ul>
-                <li><a href="#inicio">Inicio</a></li>
-                <li><a href="#seccion1">Sección 1</a></li>
-                <li><a href="#seccion2">Sección 2</a></li>
-                <li><a href="#seccion3">Sección 3</a></li>
-            </ul>
-        </nav>
-    </header>
 
-    <main>
-        <section id="inicio">
-            <h2>Página Principal</h2>
-            <p>Bienvenidos a nuestro proyecto.</p>
-        </section>
-        <section id="seccion1">
-            <h2>Sección 1</h2>
-            <p>Contenido de la sección 1.</p>
-        </section>
-        <section id="seccion2">
-            <h2>Sección 2</h2>
-            <p>Contenido de la sección 2.</p>
-        </section>
-        <section id="seccion3">
-            <h2>Sección 3</h2>
-            <p>Contenido de la sección 3.</p>
-        </section>
-        
-        <section id="formulario">
-            <h2>Formulario de Contacto</h2>
-            <form id="miFormulario">
-                <input type="text" id="nombre" placeholder="Tu nombre" required>
-                <button type="submit">Enviar</button>
-            </form>
-        </section>
-    </main>
-    <script src="script.js"></script>
+  <!-- ===== ENCABEZADO Y MENÚ ===== -->
+  <header>
+    <h1>🎓 Sistema de Estudiantes</h1>
+    <nav>
+      <ul>
+        <li><a href="#inicio">Inicio</a></li>
+        <li><a href="#seccion1">Nosotros</a></li>
+        <li><a href="#seccion2">Carreras</a></li>
+        <li><a href="#seccion3">Registro</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- ===== PÁGINA PRINCIPAL ===== -->
+    <section id="inicio" class="hero">
+      <h2>Página Principal</h2>
+      <p>Bienvenidos a nuestro proyecto. Plataforma para gestionar la información académica de los estudiantes.</p>
+      <a href="#seccion3" class="boton">Registrar estudiante</a>
+    </section>
+
+    <!-- ===== SECCIÓN 1: NOSOTROS ===== -->
+    <section id="seccion1" class="seccion">
+      <h2>Sección 1: Nosotros</h2>
+      <p>
+        Somos el área de Registro Académico. Nuestro objetivo es facilitar el ingreso,
+        actualización y consulta de datos de los estudiantes de la institución.
+      </p>
+      <button id="btnInfo" class="boton boton-secundario" type="button">Ver más información</button>
+      <p id="infoExtra" class="oculto">
+        Contamos con más de 2.500 estudiantes activos, 12 carreras profesionales
+        y un equipo de 15 personas dedicadas al soporte académico.
+      </p>
+    </section>
+
+    <!-- ===== SECCIÓN 2: CARRERAS ===== -->
+    <section id="seccion2" class="seccion">
+      <h2>Sección 2: Nuestras Carreras</h2>
+      <div class="tarjetas">
+        <div class="tarjeta">
+          <h3>💻 Ingeniería de Sistemas</h3>
+          <p>Duración: 10 semestres. Enfoque en desarrollo de software y redes.</p>
+        </div>
+        <div class="tarjeta">
+          <h3>📊 Administración</h3>
+          <p>Duración: 8 semestres. Enfoque en gestión empresarial.</p>
+        </div>
+        <div class="tarjeta">
+          <h3>⚖️ Derecho</h3>
+          <p>Duración: 10 semestres. Formación jurídica integral.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== SECCIÓN 3: FORMULARIO DE REGISTRO ===== -->
+    <section id="seccion3" class="seccion">
+      <h2>Sección 3: Registro de Estudiante</h2>
+
+      <form id="formEstudiante" novalidate>
+        <div class="campo">
+          <label for="nombre">Nombre</label>
+          <input type="text" id="nombre" name="nombre" placeholder="Ej: Ana">
+          <small class="error" id="errorNombre"></small>
+        </div>
+
+        <div class="campo">
+          <label for="apellido">Apellido</label>
+          <input type="text" id="apellido" name="apellido" placeholder="Ej: Pérez">
+          <small class="error" id="errorApellido"></small>
+        </div>
+
+        <div class="campo">
+          <label for="correo">Correo electrónico</label>
+          <input type="email" id="correo" name="correo" placeholder="Ej: ana@correo.com">
+          <small class="error" id="errorCorreo"></small>
+        </div>
+
+        <div class="campo">
+          <label for="carrera">Carrera</label>
+          <select id="carrera" name="carrera">
+            <option value="">-- Selecciona una carrera --</option>
+            <option value="Ingeniería de Sistemas">Ingeniería de Sistemas</option>
+            <option value="Administración">Administración</option>
+            <option value="Derecho">Derecho</option>
+          </select>
+          <small class="error" id="errorCarrera"></small>
+        </div>
+
+        <button type="submit" class="boton">Registrar</button>
+        <p id="respuesta" class="respuesta"></p>
+      </form>
+
+      <h3 class="titulo-tabla">Estudiantes registrados</h3>
+      <table id="tablaEstudiantes">
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Correo</th>
+            <th>Carrera</th>
+          </tr>
+        </thead>
+        <tbody id="cuerpoTabla"></tbody>
+      </table>
+      <p id="sinEstudiantes">Aún no hay estudiantes registrados.</p>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Sistema de Estudiantes — Proyecto Git &amp; GitHub</p>
+  </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>
